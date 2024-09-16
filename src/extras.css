@@ -1,0 +1,103 @@
+.btn {
+    min-width: 130px;
+    height: 40px;
+    color: #000000;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background: #F5F5F5;
+    box-shadow: 0 5px #229799;
+  }
+  .btn:hover {
+    box-shadow: 0 3px #212529;
+    top: 1px;
+  }
+  .btn:active {
+    box-shadow: 0 0 #212529;
+    top: 5px;
+  }
+  
+h2 {
+    font-size: 3rem; /* Tamaño de fuente más grande para el h2 */
+    color: black; /* Color oscuro para un buen contraste */
+    font-weight: bold; /* Negrita para resaltar */
+    margin-bottom: 10px; /* Espacio debajo del h2 */
+    text-transform: uppercase; /* Texto en mayúsculas para destacar */
+}
+
+/* Estilos para h3 */
+h3 {
+    font-size: 20rem; /* Un poco más pequeño que h2 */
+  
+    margin-bottom: 8px; /* Espacio debajo del h3 */
+    font-weight: normal; /* Sin negrita para mayor contraste con h2 */
+    
+}
+
+/* Estilos para los párrafos */
+p {
+    font-size: 1rem; /* Tamaño de fuente estándar */
+    line-height: 1.6; /* Mejora la legibilidad del texto */
+    color: #444; /* Un tono gris oscuro para un buen contraste */
+    margin-bottom: 12px; /* Espacio debajo de cada párrafo */
+    text-align: justify; /* Justificación para un texto más limpio */
+    padding: 10px 0; /* Agrega un espacio dentro del párrafo */
+}
+/* Estilo base para el botón flotante */
+.floating-btn {
+  position: fixed; /* Hace que el botón esté en una posición fija en la pantalla */
+  bottom: 20px; /* Ajusta la distancia desde el borde inferior de la pantalla */
+  right: 20px; /* Ajusta la distancia desde el borde derecho de la pantalla */
+  width: 50px; /* Ancho del botón */
+  height: 50px; /* Alto del botón */
+  background-color: #229799; /* Color de fondo del botón */
+  color: white; /* Color del signo "+" */
+  border: none; /* Elimina el borde */
+  border-radius: 50%; /* Hace que el botón sea redondo */
+  font-size: 2rem; /* Tamaño de la fuente para el "+" */
+  display: flex; /* Permite centrar el contenido */
+  justify-content: center; /* Centra el signo "+" horizontalmente */
+  align-items: center; /* Centra el signo "+" verticalmente */
+  cursor: pointer; /* Cambia el cursor a "pointer" al pasar sobre el botón */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Añade una sombra sutil */
+  transition: background-color 0.3s ease; /* Transición suave para cambios de color */
+}
+
+/* Efecto hover para cambiar el color al pasar el ratón */
+.floating-btn:hover {
+  background-color: #229799; /* Cambia el color al pasar el ratón por encima */
+}
+.left{
+  position: fixed; /* Fija el botón en la pantalla sin importar el desplazamiento */
+  bottom: 20px; /* A 20px del borde inferior de la pantalla */
+  left: 20px; /* A 20px del borde izquierdo de la pantalla */
+}
+.form-add-todo {
+  position: fixed; /* Fija el contenedor en relación con la ventana */
+  top: 50%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta la posición para que quede exactamente en el centro */
+  background-color: white; /* Color de fondo para el formulario */
+  padding: 20px; /* Espacio interno alrededor del contenido */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+  width: 300px; /* Ancho del formulario */
+  z-index: 1000; /* Asegura que esté sobre otros elementos */
+}
+
+/* Estilos opcionales para los inputs y select */
+.form-add-todo input,
+.form-add-todo select {
+  width: 100%; /* Asegura que los inputs ocupen todo el ancho del contenedor */
+  padding: 8px; /* Espacio dentro del input */
+  margin-bottom: 15px; /* Espacio entre los campos */
+  border: 1px solid #ccc; /* Borde del input */
+  border-radius: 5px; /* Bordes redondeados para los inputs */
+  box-sizing: border-box; /* Incluye el padding dentro del width */
+}
