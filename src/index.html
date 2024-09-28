@@ -19,7 +19,7 @@
     <div class="body">
       
         <div class="projects">
-            <button class="floating-btn left add-project">+</button>
+            <button class="floating-btn left add-project" id="project">+</button>
             <div class="project-cart" id="3">
                 <h2>Title</h2>
                 <h3>13/6/2023</h3>
@@ -27,42 +27,47 @@
             </div>
         </div>
         <div class="project-view">
-            <button class="floating-btn right add-todo">+</button>
+            <button class="floating-btn right add-todo" id="cart">+</button>
             <div class="project-view-title">
-                <h1>Title</h1>
+                <h1 id="title-project-main">Title</h1>
             </div>
-            <div class="project-view-cart">
-                <h3>title</h3>
-                <h3>date</h3>
-                <p>Description</p>
-                <button class="list">X</button>
+            <div class="project-carts-container">
+                <div class="project-view-cart">
+                    <h3>title</h3>
+                    <h3>date</h3>
+                    <p>Description</p>
+                    <button class="close-cart">X</button>
+                </div>
             </div>
+ 
         </div>
 
         </div>
 <div class="form todo-form" id="hidden">
-    <h3>Title</h3>
-    <input type="text" id="input-title" class="title" required="true">
+    <h3 >Title</h3>
+    <input type="text" id="input-title-todo" class="title" required="true">
     <h3>Date finalization</h3>
-    <input type="date" id="input-date" class="date">
+    <input type="date" id="input-date-todo" class="date">
     <h3>Description</h3>
-    <input type="text" id="input-description" class="description">
+    <input type="text" id="input-description-todo" class="description">
     <h3>Priority</h3>
-    <select Name="priority" id="input-priority" Size="Number_of_options">  
+    <select Name="priority" id="input-priority-todo" Size="Number_of_options">  
         <option> 1 </option>  
         <option> 2 </option>  
         <option> 3 </option>  
-      </select>  
+      </select>
+    <h3>Project:</h3>
+    <input type="text" id="input-project-name"readonly>  
       <button id="todo" class="save-form-todo btn" >Save</button>
   
 </div>
 <div class="form project-form" id="hidden">
     <h3>Title</h3>
-    <input type="text" class="title" id="input-title" required="true">
+    <input type="text" class="title" id="input-title-project" required="true">
     <h3>Date finalization</h3>
-    <input type="date" id="input-date" class="date">
+    <input type="date" id="input-date-project" class="date">
     <h3>Description</h3>
-    <input type="text" id="input-description"  class="description">
+    <input type="text" id="input-description-project"  class="description">
     <button  id="project" class="save-form-project btn">Save</button>
 </div>
 </body>

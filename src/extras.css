@@ -101,3 +101,7 @@ p {
   border-radius: 5px; /* Bordes redondeados para los inputs */
   box-sizing: border-box; /* Incluye el padding dentro del width */
 }
+#input-project-name{
+  background-color: lightgray;
+  margin-bottom: 10px;
+}
