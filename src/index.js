@@ -115,24 +115,40 @@ function extractForm(form) {
 function saveForm(element){
   console.log(element.id);
   element.addEventListener("click",()=>{
+
   let project;
       if(element.id=="project"){
         projectForm.setAttribute("id", "hidden");
         const formData = extractForm("project");
-        project=createElement(formData,element.id);
-        selectProject(project);
-        console.log("project");
+        if (dataValitadionForm(formData)){
+          project=createElement(formData,element.id);
+          console.log(formData);
+          selectProject(project);
+          console.log("project");
+        }
+        else{alert("Error verify data entrys")};
         
       }else{
         todoForm.setAttribute("id", "hidden");
         const formData = extractForm("todo");
+        if (dataValitadionForm(formData)){
         createElement(formData,element.id);
         console.log("TODO");
+        }
+        else{alert("Error verify data entrys")};
       }
       
   })
 }
-
+function dataValitadionForm(element) {
+  if (element.title && element.date) { // Only check title and date for todo
+      return true;
+  } else if (element.title && element.date && element.projectName) { // Optional check for projectName
+      return true;
+  } else {
+      return false;
+  }
+}
 formAdd(projectAdd);
 formAdd(todoAdd);
 saveForm(btnSaveProject);

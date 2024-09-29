@@ -115,6 +115,7 @@ button.close-cart:hover {
     grid-template-columns: auto auto auto;
     padding: 10px;
 }
+
 .project-cart:hover {
     background-color: #d1e8ff;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
@@ -200,3 +201,22 @@ button.close-cart:hover {
 #hidden,.hidden{
     display: none;
 }
+@media (max-width: 1200px) {
+    .project-carts-container {
+      grid-template-columns: repeat(2, auto);
+    }
+    .project-view-cart {
+        width: 75%;
+        height: 100px;
+      }
+    
+      .project-cart {
+        width: 75%;
+        height: auto; /* Permite que la altura se ajuste al contenido */
+        padding: 15px;
+      }
+      .project-cart p{
+        display: none;
+      }
+
+  }

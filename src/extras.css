@@ -105,3 +105,19 @@ p {
   background-color: lightgray;
   margin-bottom: 10px;
 }
+@media (max-width: 1200px) {
+  .project-carts-container {
+    grid-template-columns: repeat(2, auto);
+  }
+
+  .project-view-cart {
+    width: 100px; /* Ajusta el ancho según tus necesidades */
+    height: 100px; /* Ajusta la altura según tus necesidades */
+    background-color: red;
+  }
+
+  .project-cart {
+    width: 90%; /* Ocupa un porcentaje menor del ancho disponible */
+    height: 4em;
+  }
+}
