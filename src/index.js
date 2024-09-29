@@ -2,8 +2,10 @@ import { ca } from "date-fns/locale";
 import "./extras.css"
 import "./main.css";
 import "./reset.css";
-import { createExampleProject } from "./examples";
+import { createExampleProject, createSupermarketProject } from "./examples";
+import { selectAllProjects,selectProject, deleteAllTodo } from "./functions-project";
 console.log("hola web  ss");
+
 //Forms
 const projectAdd= document.querySelector(".add-project");
 const projectForm=document.querySelector(".project-form");
@@ -22,7 +24,7 @@ function extractForm(form) {
     const description = document.getElementById("input-description"+type).value;
     if (type=="-todo"){
       const priority = document.getElementById("input-priority"+type).value;
-      const projectName= document.getElementById("input-project-name").value;
+      const projectName= document.getElementById("input-project-name").value.trim().toLowerCase();
       return { title, date, description, priority, projectName };
     }
    else{
@@ -49,22 +51,35 @@ function extractForm(form) {
   
     if (type === "project") {
       div.className = "project-cart";
-      div.id=element.title.trim().toLowerCase();
+      div.id = element.title.trim().toLowerCase();
+      button.textContent="X";
+      button.className="btn-close-cart-project";
       projects.appendChild(div); // Append the new div to projects
       div.addEventListener("click",()=>{
         selectProject(div);
-      })
+      });
+      button.addEventListener("click",()=>{
+        deleteAllTodo(div);
+        div.remove();
+      });
+      div.appendChild(button);
+
     } else {
       // Handle priority differently if needed in future versions
       div.className ="project-view-cart";
-      div.id="cart-"+ element.projectName.trim().toLowerCase();
+      div.id = "cart-" + element.projectName.trim().toLowerCase().replace(/\s+/g, '-');
+      console.log(element.projectName.trim().toLowerCase());
       button.textContent="X";
-      button.className="close-cart";
+      button.className="close-cart";  
       div.appendChild(button);
       carts.appendChild(div); // Append the new div to projects
       button.addEventListener("click",()=>{
         div.remove();
-      })
+      });
+      const h2ProjectName = document.createElement("h1");
+      h2ProjectName.textContent=element.projectName;
+      h2ProjectName.id="cart-text-project-name"
+      div.appendChild(h2ProjectName);
     }
     return div;
   }
@@ -85,11 +100,11 @@ function extractForm(form) {
           const normalizedTitle = projectTitle.textContent.trim().toLowerCase();
 
             // Compara con "title" también en minúsculas y sin espacios
-            if (normalizedTitle === "title") {
+            if (normalizedTitle === "title" || normalizedTitle ==="all todo") {
                 alert("First create a project, please");
             }else{
               todoForm.setAttribute("id", "show");
-              inputProjectAdd.value =projectTitle.textContent;
+              inputProjectAdd.value =projectTitle.textContent.trim().toLowerCase();
               console.log(inputProjectAdd);
             }
             
@@ -117,25 +132,6 @@ function saveForm(element){
       
   })
 }
-function selectProject(element){
-    const allTodoSelect=document.querySelectorAll("#cart-"+projectTitle.textContent);
-    console.log(allTodoSelect); 
-  allTodoSelect.forEach(function (todo) {
-    todo.classList.add("hidden");
-  });
-    const projectNewSelect=element.getAttribute('id');
-    projectTitle.textContent=projectNewSelect;
-    const allTodoHidden = document.querySelectorAll("#cart-" + projectNewSelect);
-    allTodoHidden.forEach(function (todo) {
-      todo.classList.remove("hidden");
-    });
-}
-function selectAllProjects(){
-  const allTodoSelect=document.querySelectorAll("#cart-");
-  allTodoSelect.forEach(function (todo) {
-    todo.classList.remove("hidden");
-  });
-}
 
 formAdd(projectAdd);
 formAdd(todoAdd);
@@ -143,6 +139,7 @@ saveForm(btnSaveProject);
 saveForm(btnSaveTodo);
 console.log(projectAdd);
 createExampleProject("First");
-createExampleProject("Second");
+createSupermarketProject();
+selectAllProjects();
 
 

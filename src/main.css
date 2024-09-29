@@ -79,6 +79,32 @@ button.close-cart{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    font-size: 0.6rem; 
+    color: #333;
+    font-weight : bold;
+}
+
+.btn-close-cart-project {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    top: 10px; /* Add this line */
+    right: 10px; /* Add this line */
+    font-size: 0.6rem;
+    color: #333;
+    font-weight: bold;
+   
+  }
+.close-cart-project{
+    background-color: red;
+   
 }
 
 button.close-cart:hover {
@@ -89,6 +115,12 @@ button.close-cart:hover {
     grid-template-columns: auto auto auto;
     padding: 10px;
 }
+.project-cart:hover {
+    background-color: #d1e8ff;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
+  }
 .project-view-cart{
     border-radius: 10px;
     filter: drop-shadow(0 5px 10px 0 #ffffff);
@@ -108,7 +140,7 @@ button.close-cart:hover {
   z-index: -1;
   top: -15px;
   right: -15px;
-  background: #7952b3;
+  background: #229799;
   height:220px;
   width: 25px;
   border-radius: 32px;
@@ -116,6 +148,14 @@ button.close-cart:hover {
   transform-origin: 50% 50%;
   transition: transform 0.25s ease-out;
 }
+#cart-text-project-name {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 1.2rem; 
+    color: #333;
+    font-weight : bold;
+  }
 .project-view-cart h3{
     font-size: 1.7rem;
 }
