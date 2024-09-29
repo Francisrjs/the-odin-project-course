@@ -2,6 +2,7 @@ import { ca } from "date-fns/locale";
 import "./extras.css"
 import "./main.css";
 import "./reset.css";
+import { createExampleProject } from "./examples";
 console.log("hola web  ss");
 //Forms
 const projectAdd= document.querySelector(".add-project");
@@ -48,7 +49,7 @@ function extractForm(form) {
   
     if (type === "project") {
       div.className = "project-cart";
-      div.id=element.title;
+      div.id=element.title.trim().toLowerCase();
       projects.appendChild(div); // Append the new div to projects
       div.addEventListener("click",()=>{
         selectProject(div);
@@ -56,38 +57,57 @@ function extractForm(form) {
     } else {
       // Handle priority differently if needed in future versions
       div.className ="project-view-cart";
-      div.id="cart-"+ element.projectName;
+      div.id="cart-"+ element.projectName.trim().toLowerCase();
       button.textContent="X";
       button.className="close-cart";
       div.appendChild(button);
       carts.appendChild(div); // Append the new div to projects
-
+      button.addEventListener("click",()=>{
+        div.remove();
+      })
     }
+    return div;
   }
-function formAdd(element){
-  console.log("form add");
-  console.log(element.id);
-  console.log(element.projectName);
-  
-    element.addEventListener("click",()=>{
-      if(element.id=="project"){
-      projectForm.setAttribute("id", "show");
-      }else{
-      todoForm.setAttribute("id","show");
-      }
-      console.log("click");
-  })
-  inputProjectAdd.value=actualProject;
-  }
+  export{createElement};
+  function formAdd(element) {
+    console.log("form add");
+    console.log(actualProject);
+    if (element && element.projectName) {
+        console.log(element.projectName);
+    } else {
+        console.warn("El elemento no tiene projectName");
+    }
+
+    element.addEventListener("click", () => {
+        if (element.id == "project") {
+            projectForm.setAttribute("id", "show");
+        } else {
+          const normalizedTitle = projectTitle.textContent.trim().toLowerCase();
+
+            // Compara con "title" también en minúsculas y sin espacios
+            if (normalizedTitle === "title") {
+                alert("First create a project, please");
+            }else{
+              todoForm.setAttribute("id", "show");
+              inputProjectAdd.value =projectTitle.textContent;
+              console.log(inputProjectAdd);
+            }
+            
+        }
+        console.log("click");
+    });
+}
 function saveForm(element){
   console.log(element.id);
   element.addEventListener("click",()=>{
-     
+  let project;
       if(element.id=="project"){
         projectForm.setAttribute("id", "hidden");
         const formData = extractForm("project");
-        createElement(formData,element.id);
+        project=createElement(formData,element.id);
+        selectProject(project);
         console.log("project");
+        
       }else{
         todoForm.setAttribute("id", "hidden");
         const formData = extractForm("todo");
@@ -98,23 +118,31 @@ function saveForm(element){
   })
 }
 function selectProject(element){
-    const allTodoSelect=document.querySelectorAll(".cart-"+actualProject);
+    const allTodoSelect=document.querySelectorAll("#cart-"+projectTitle.textContent);
     console.log(allTodoSelect); 
   allTodoSelect.forEach(function (todo) {
     todo.classList.add("hidden");
   });
     const projectNewSelect=element.getAttribute('id');
     projectTitle.textContent=projectNewSelect;
-    const allTodoHidden = document.querySelectorAll(".cart-" + projectNewSelect);
+    const allTodoHidden = document.querySelectorAll("#cart-" + projectNewSelect);
     allTodoHidden.forEach(function (todo) {
       todo.classList.remove("hidden");
     });
 }
+function selectAllProjects(){
+  const allTodoSelect=document.querySelectorAll("#cart-");
+  allTodoSelect.forEach(function (todo) {
+    todo.classList.remove("hidden");
+  });
+}
+
 formAdd(projectAdd);
 formAdd(todoAdd);
 saveForm(btnSaveProject);
 saveForm(btnSaveTodo);
 console.log(projectAdd);
-
+createExampleProject("First");
+createExampleProject("Second");
 
 

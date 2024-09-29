@@ -157,6 +157,6 @@ button.close-cart:hover {
     
 }
 
-#hidden{
+#hidden,.hidden{
     display: none;
 }
