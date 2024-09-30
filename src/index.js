@@ -4,8 +4,7 @@ import "./main.css";
 import "./reset.css";
 import { createExampleProject, createSupermarketProject } from "./examples";
 import { selectAllProjects,selectProject, deleteAllTodo } from "./functions-project";
-console.log("hola web  ss");
-
+import { saveElement, removeSavesElement, importProjects,loadProjectsFromStorage  } from "./save";
 //Forms
 const projectAdd= document.querySelector(".add-project");
 const projectForm=document.querySelector(".project-form");
@@ -48,7 +47,7 @@ function extractForm(form) {
     div.appendChild(h2);
     div.appendChild(h3);
     div.appendChild(p);
-  
+    saveElement(element,type);
     if (type === "project") {
       div.className = "project-cart";
       div.id = element.title.trim().toLowerCase();
@@ -60,10 +59,11 @@ function extractForm(form) {
       });
       button.addEventListener("click",()=>{
         deleteAllTodo(div);
+        removeSavesElement(element, "project");
         div.remove();
       });
       div.appendChild(button);
-
+  
     } else {
       // Handle priority differently if needed in future versions
       div.className ="project-view-cart";
@@ -74,6 +74,7 @@ function extractForm(form) {
       div.appendChild(button);
       carts.appendChild(div); // Append the new div to projects
       button.addEventListener("click",()=>{
+        removeSavesElement(element,"todo");
         div.remove();
       });
       const h2ProjectName = document.createElement("h1");
@@ -149,13 +150,22 @@ function dataValitadionForm(element) {
       return false;
   }
 }
+const btnMarket=document.querySelector(".supermarket-create");
+btnMarket.addEventListener("click",()=>{
+  createSupermarketProject();
+})
+
 formAdd(projectAdd);
 formAdd(todoAdd);
 saveForm(btnSaveProject);
 saveForm(btnSaveTodo);
 console.log(projectAdd);
-createExampleProject("First");
-createSupermarketProject();
+//examples
+
 selectAllProjects();
+//import memory
+  loadProjectsFromStorage();   // Carga los proyectos almacenados en localStorage
+  importProjects();            // Importa y crea los elementos en el DOM
+
 
 

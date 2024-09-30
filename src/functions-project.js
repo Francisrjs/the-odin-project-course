@@ -27,10 +27,13 @@ function selectAllProjects(){
 projectTitle.textContent="All todo"
 }
 function deleteAllTodo(project){
-const todoProject=document.querySelectorAll("#cart-"+project.id);
+  const projectId=project.getAttribute('id').trim().toLowerCase().replace(/\s+/g, '-')
+const todoProject=document.querySelectorAll("#cart-"+projectId);
+console.log(todoProject);
 todoProject.forEach(function (todo) {
     todo.remove();
-    console.log("remuevo" + todo.id);
+    console.log("remuevo-----------delete ALL TODO");
+    console.log(todo.id);
   });
 }
 
