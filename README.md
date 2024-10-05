@@ -1,4 +1,4 @@
-"# Webpack todo-list" 
+# Webpack todo-list
 Project for Odin Project.
 
 CSS + HTML + JS
