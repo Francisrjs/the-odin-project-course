@@ -49,8 +49,8 @@
     "utila": "^0.4.0"
   },
   "scripts": {
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack serve --config webpack.dev.js",
+  "build": "webpack --config webpack.prod.js"
   },
   "author": "rjs",
   "license": "ISC",
